@@ -8,7 +8,7 @@ Web Site:	http://www.evankeller.com/professional/coldfusion/cf_metar/
 Copyright:	2003-2009, by Evan R. Keller. All rights reserved.
 
 About:		METAR is a standardized format for hourly weather observations
-			uses by NOAA for aviation weather. This custom tag will parse
+			uses by NOAA for aviation weather. This component will parse
 			a METAR report and return the data in a human-readable structure.
 
 Version History:
@@ -25,7 +25,6 @@ Desired Improvements:
 			* Parse remarks
 
 --->
-
 
 	<cffunction access="remote" name="decode" output="no" returntype="struct">
 		<cfargument name="metar" type="string" required="yes" displayname="Metar Text" hint="text of the METAR report">
@@ -385,6 +384,20 @@ Desired Improvements:
 		</cfscript>
 		
 		<cfreturn decoded />
+	</cffunction>
+	
+	<cffunction access="public" name="getObservation" output="no" returntype="string">
+		<cfargument name="station" type="string" required="yes" displayname="Metar Text" hint="text of the METAR report">
+		<cftry>
+			<cfhttp url="http://weather.noaa.gov/pub/data/observations/metar/stations/#arguments.station#.TXT" method="get" resolveurl="no">
+			</cfhttp>
+			<cfcatch>
+				<cfset cfhttp.FileContent = "">
+			</cfcatch>
+		</cftry>
+
+		<cfreturn cfhttp.FileContent />
+	
 	</cffunction>
 	
 </cfcomponent>

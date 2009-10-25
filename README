@@ -4,7 +4,7 @@ Web Site:   http://www.evankeller.com/professional/coldfusion/cf_metar/
 Copyright:  2003-2009, by Evan R. Keller. All rights reserved.
 
 About:      METAR is a standardized format for hourly weather observations
-            uses by NOAA for aviation weather. This custom tag will parse
+            uses by NOAA for aviation weather. This component will parse
             a METAR report and return the data in a human-readable structure.
 
 Version History:
